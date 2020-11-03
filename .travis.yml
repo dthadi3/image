@@ -1,5 +1,8 @@
 ---
 language: go
+arch:
+  - AMD64
+  - ppc64le
 sudo: required
 notifications:
   email: false
@@ -9,8 +12,8 @@ services:
 os:
   - linux
 before_install:
- - sudo docker build -t image-test -f .travis.Dockerfile .
- - sudo chown -R $(id -u):$(id -g) $HOME/gopath
+  - sudo docker build -t image-test -f .travis.Dockerfile .
+  - sudo chown -R $(id -u):$(id -g) $HOME/gopath
 
 env:
   - BUILDTAGS='btrfs_noversion libdm_no_deferred_remove'
